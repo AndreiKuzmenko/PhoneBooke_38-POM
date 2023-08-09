@@ -6,17 +6,22 @@ import org.openqa.selenium.support.FindBy;
 
 public class SplashScreen extends BaseScreen{
 
-    public SplashScreen(AppiumDriver<MobileElement> driver)
-    {
+
+    public SplashScreen(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
-@FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/version_text']")
+
+    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/version_text']")
     MobileElement versionTextView;
 
 
-    public  String getCurrentVersion()
-    {
+    public String getCurrentVersion(){
         return versionTextView.getText();
     }
 
+    public AuthenticationScreen gotoAuthenticationScreen(){
+        return new AuthenticationScreen(driver);
+    }
 }
+
+

@@ -1,5 +1,6 @@
 import config.AppiumConfig;
 import models.Contact;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import screens.ContactListScreen;
@@ -13,8 +14,8 @@ public class AddNewContactTests extends AppiumConfig {
     public void precondition(){
         new SplashScreen(driver)
                 .gotoAuthenticationScreen()
-                .fillEmail("qwee444@gmail.com")
-                .fillPassword("$Wwer23434")
+                .fillEmail("qwe_1032@gmail.com")
+                .fillPassword("$Abgff5655545")
                 .submitLogin();
     }
 
@@ -28,10 +29,12 @@ public class AddNewContactTests extends AppiumConfig {
                 .address("Holon")
                 .description("Best friend")
                 .build();
-
+Assert.assertTrue(
         new ContactListScreen(driver)
                 .openContactForm()
                 .fillContactForm(contact)
-                .submitContact();
+                .submitContact()
+                .isContactAdded(contact)
+);
     }
 }

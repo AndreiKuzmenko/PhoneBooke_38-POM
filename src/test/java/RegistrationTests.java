@@ -10,26 +10,25 @@ public class RegistrationTests extends AppiumConfig {
     int i = new Random().nextInt(1000) + 1000;
 
     @Test
-    public void LoginPositive(){
+    public void RegPositive(){
         Assert.assertTrue(
                 new SplashScreen(driver)
                         .gotoAuthenticationScreen()
                         .fillEmail("qwe_" + i + "@gmail.com")
-                        .fillPassword("$Abcd5612345")
+                        .fillPassword("$Abgff5655545")
                         .submitRegistration()
                         .isContactListActivityPresent()
         );
     }
     @Test
-    public void LoginNegativeWrongEmail(){
+    public void RegistrationNegativeWrongEmail(){
         Assert.assertTrue(
-                new SplashScreen(driver)
-                        .gotoAuthenticationScreen()
-                        .fillEmail("abc_" + i + "@def.com")
-                        .fillPassword("$Abcdef12345")
-                        .submitRegistration()
-                        .isContactListActivityPresent()
-        );
+                        new SplashScreen(driver)
+                                .gotoAuthenticationScreen()
+                                .fillEmail("qwe_" + i + "gmail.com")
+                                .fillPassword("$Abgff5655545")
+                                .submitRegistrationNegative()
+                                .isErrorMessageHasText("{username=must be a well-formed email address}")
+                );
     }
-
 }

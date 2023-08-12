@@ -24,6 +24,10 @@ public class AuthenticationScreen extends BaseScreen{
 
     @FindBy(id = "com.sheygam.contactapp:id/loginBtn")
     MobileElement loginBtn;
+    @FindBy(id = "android:id/message")
+    MobileElement errorTextView;
+    @FindBy(id = "android:id/button1")
+    MobileElement okBtn;
 
 
     public AuthenticationScreen fillEmail(String email) {
@@ -47,6 +51,11 @@ public class AuthenticationScreen extends BaseScreen{
     public AuthenticationScreen submitRegistrationNegative(){
         regBtn.click();
         return this;
+    }
+
+    public boolean isErrorMessageHasText(String text){
+//        return errorTextView.getText().contains(text);
+        return isErrorMessageContainsText(text);
     }
 
 
